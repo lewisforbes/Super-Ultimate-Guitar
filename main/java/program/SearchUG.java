@@ -7,6 +7,8 @@ import java.net.URL;
 public class SearchUG {
     public static String getURL(String query) {
         query = query.replace(" ", "+");
+        query = query.replace("'", "%27");
+
 
         String searchURL = "https://www.ultimate-guitar.com/search.php?title=" + query + "&page=1&type=300";
 
