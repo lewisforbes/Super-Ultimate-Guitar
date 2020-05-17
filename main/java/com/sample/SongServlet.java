@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.channels.FileLockInterruptionException;
 
 
 @WebServlet(
@@ -30,9 +31,11 @@ public class SongServlet extends HttpServlet {
             return;
         }
 
+        String songUrl = getURL(songToPrint);
+        req.setAttribute("url", songUrl);
         req.setAttribute("transposedBy", 0);
-        req.setAttribute("size", 15);
-        req.setAttribute("song", songToPrint);
+        req.setAttribute("size", 20);
+        req.setAttribute("song", removeLine(songToPrint, "Available at: " + songUrl));
         RequestDispatcher view = req.getRequestDispatcher("song.jsp");
         view.forward(req,resp);
     }
@@ -63,7 +66,9 @@ public class SongServlet extends HttpServlet {
             return;
         }
 
-        req.setAttribute("song", transposedSong);
+        String songURL = getURL(transposedSong);
+        req.setAttribute("url", songURL);
+        req.setAttribute("song", removeLine(transposedSong, "Available at: " + songURL));
         req.setAttribute("transposedBy", transposedBy);
         req.setAttribute("size", size);
         RequestDispatcher view = req.getRequestDispatcher("song.jsp");
@@ -73,6 +78,23 @@ public class SongServlet extends HttpServlet {
     private static void goHome(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("gohome.jsp");
         view.forward(req,resp);
+    }
+
+    private static String getURL(String song) {
+        try {
+            String preTarget = "Available at: ";
+            String url = song.substring(song.indexOf(preTarget) + preTarget.length());
+            url = url.substring(0, url.indexOf("\n"));
+            return url;
+        } catch (Exception ignored) { }
+        throw new IllegalArgumentException("Song to print has not been formatted correctly or set");
+    }
+
+    private static String removeLine(String text, String line) {
+        try {
+            return text.replace(line + "\n", "");
+        } catch (Exception ignored) { }
+        throw new IllegalArgumentException(line + "\nis not in\n" + text);
     }
 
 }

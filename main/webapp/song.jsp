@@ -28,6 +28,7 @@ $(document).ready(function(){
     <%
     String transposedBy = "" + (Integer) request.getAttribute("transposedBy");
     String givenSize = "" + (Integer) request.getAttribute("size");
+    String songUrl = (String) request.getAttribute("url");
     %>
     <div>
         <label for="transpose">Transpose by: </label>
@@ -36,18 +37,22 @@ $(document).ready(function(){
         <label for="size">Font size: </label>
         <input type="number" value="<%= givenSize %>" id="size" style="width:35px;" min="0" max="999">
         <br><br>
-        <button type="button" id="submit">Update!</button>
+        <button type="button" id="submit">Update</button>
     </div>
 </center>
 <div>
 <p class="song" style="font-family:monospace; color:black; font-size:<%= givenSize %>px;">
-<%
+    <a href="<%= songUrl %>">Original Song</a>
+    <br><br>
+    <%
     String song = (String) request.getAttribute("song");
     String[] songLines = song.split("\n");
     for (String line : songLines) {
         out.println(line.replace(" ", "&#160;") + "<br>");
     }
-%>
+    %>
+    <br><br>
+    <a href="<%= songUrl %>">Original Song</a>
 </p>
 </div>
 <br><br>

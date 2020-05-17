@@ -59,5 +59,6 @@ public class Main {
         currentTaggedSong = null;
         originalChords = null;
         currentSongUrl = null;
+        MusicUtils.capo = 0;
     }
 }
