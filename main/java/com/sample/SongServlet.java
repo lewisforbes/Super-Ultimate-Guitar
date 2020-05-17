@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.channels.FileLockInterruptionException;
 
 
 @WebServlet(
@@ -34,7 +33,7 @@ public class SongServlet extends HttpServlet {
         String songUrl = getURL(songToPrint);
         req.setAttribute("url", songUrl);
         req.setAttribute("transposedBy", 0);
-        req.setAttribute("size", 20);
+        req.setAttribute("size", 15);
         req.setAttribute("song", removeLine(songToPrint, "Available at: " + songUrl));
         RequestDispatcher view = req.getRequestDispatcher("song.jsp");
         view.forward(req,resp);
