@@ -40,7 +40,7 @@ $(document).ready(function(){
         <button type="button" id="submit">Update</button>
     </div>
 </center>
-<div>
+<div class="notranslate">
 <p class="song" style="font-family:monospace; color:black; font-size:<%= givenSize %>px;">
     <a href="<%= songUrl %>">Original Song</a>
     <br><br>
