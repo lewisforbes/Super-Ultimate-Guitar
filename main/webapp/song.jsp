@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-<center>
+<!--<center>-->
     <h1>
         <a href="http://lewis-forbes.us-east-2.elasticbeanstalk.com/guitar/" style="color:inherit">Super Ultimate Guitar</a>
     </h1>
@@ -39,10 +39,11 @@ $(document).ready(function(){
         <br><br>
         <button type="button" id="submit">Update</button>
     </div>
-</center>
+<br><br>
+<!--</center>-->
 <div class="notranslate">
-<p class="song" style="font-family:monospace; color:black; font-size:<%= givenSize %>px;">
-    <a href="<%= songUrl %>">Original Song</a>
+<p class="song" style="font-family:monospace; color:black; font-size:<%= givenSize %>px; white-space: nowrap;">
+    <a href="<%= songUrl %>">Original</a>
     <br><br>
     <%
     String song = (String) request.getAttribute("song");
@@ -52,18 +53,18 @@ $(document).ready(function(){
     }
     %>
     <br><br>
-    <a href="<%= songUrl %>">Original Song</a>
+    <a href="<%= songUrl %>">Original</a>
 </p>
 </div>
 <br><br>
-<center>
-    <h2 style="font-size:x-large">Hefty merci (and d&eacute;sol&eacute;) to</h2>
+<!--<center>-->
+    <h2 style="font-size:x-large">Hefty merci (and d&eacute;sol&eacute;) to:</h2>
     <a href="https://www.ultimate-guitar.com/">Ultimate Guitar</a><br><br>
     <div>
         <br><br>
         <p>Made by <a href="https://lewisforbes.com/">Lewis Forbes</a></p>
         <p>Code available on <a href="https://github.com/lewisforbes/Super-Ultimate-Guitar">GitHub</a></p>
     </div>
-</center>
+<!--</center>-->
 </body>
 </html>
