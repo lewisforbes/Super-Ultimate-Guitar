@@ -14,7 +14,7 @@ $(document).ready(function(){
     $("#submit").click(function(e) {
         var transposevalue = $("#transpose").val();
         var sizevalue =  $("#size").val();
-        window.location.replace("http://localhost:8080/SuperUltimateGuitar/song?transpose="+transposevalue+"&size="+sizevalue);
+        window.location.replace("http://lewis-forbes.us-east-2.elasticbeanstalk.com/guitar/song?transpose="+transposevalue+"&size="+sizevalue);
     });
 });
 </script>
